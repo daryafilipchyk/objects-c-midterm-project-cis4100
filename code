@@ -1,0 +1,192 @@
+//Midterm Project 2
+//Created by Darya Filipchyk
+//04.17.2021
+
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+ 
+class Person
+{
+protected:
+    string name;
+public:
+    Person(){
+        name = " ";
+        }
+    void setName(string n){
+        name = n;
+        }
+    string getName(){
+        return name;
+        }
+};
+
+class Student: public Person{
+protected:
+    double gpa;
+    string courseList[10];
+    int courseCount;
+public:
+    Student() {
+        name = " ";
+        gpa = 0.0;
+        courseCount = 0;
+    }
+    string honor() {
+        string tmp;
+            if(gpa>3.85)
+                tmp = "honor";
+            else
+                tmp = "not honor";
+            return tmp;
+        }
+    void setCourse(string a) {
+        courseList[courseCount++] = a;
+        }
+    virtual void getCourse() {
+        for(int i=0;i<courseCount;++i)
+        cout<<courseList[i]<<" "<<endl;
+        }
+    void setGpa(double a) {
+        gpa = a;
+        }
+    double getGpa() {
+        return gpa;
+        }
+};
+
+
+class Employee: public Person {
+protected:
+        double salary;
+public:
+    Employee() {
+        name = " ";
+        salary = 0.0;
+    }
+    double newSalary(){
+        return (1.03 * salary);
+        }
+    void setSalary(double a) {
+        salary = a;
+        }
+    double getSalary() {
+        return salary;
+        }
+};
+
+
+class Undergrad: public Student {
+protected:
+    int year;
+public:
+    Undergrad() {
+        name = " ";
+        gpa = 0.0;
+        year = 0;
+    }
+    void getCourse(string courseList[]) {
+        cout<<"List of courses for Undergaraduate student: "<<endl;
+           for(int i=0;i<courseCount;++i)
+        cout<<courseList<<" "<<endl;
+        }
+    void setYear(int y) {
+        year = y;
+        }
+    int getYear() {
+        return year;
+        }
+};
+
+
+class Graduate: public Student {
+protected:
+    string goal;
+public:
+    Graduate() {
+        name = " ";
+        gpa = 0.0;
+        goal = " ";
+    }
+    void getCourse() {
+        cout<<"List of courses for Graduate student: "<<endl;
+        for(int i=0;i<courseCount;++i){
+            cout<<courseList[i]<<" "<<endl;}
+        }
+    void setGoal(string g) {
+        goal = g;
+        }
+    string getGoal(){
+        return goal;
+        }
+};
+
+class Staff: public Employee {
+protected:
+        string status;
+public:
+    Staff() {
+        name = " ";
+        salary = 0.0;
+        status = " ";
+    }
+    void setName(string n){
+        name=n;
+    }
+    string getName(){
+        return name;
+    }
+    void setStatus(string s) {
+        status = s;
+        }
+    string getStatus()
+        {
+        return status;
+        }
+};
+
+class Professor: public Employee
+{
+protected:
+    string status;
+public:
+    Professor(){
+        name = "";
+        salary = 0.0;
+        status = " ";
+    }
+    void setStatus(string s){
+        status = s;
+        }
+    string getStatus(){
+        return status;
+        }
+};
+
+int main()
+{
+    Undergrad S1;
+    S1.setName("David Francis");
+    cout<<S1.getName()<<endl;
+    S1.setGpa(3.14);
+    cout<<S1.getGpa()<<endl;
+    cout<<S1.honor()<<endl;
+
+    string myList[]={"Math"};
+
+    Staff E1;
+    E1.setName("Michael Poll");
+    cout<<E1.getName()<<endl;
+    E1.setStatus("manager");
+    cout<<E1.getStatus()<<endl;
+    
+    
+    Employee E2;
+    E2.setSalary(980);
+    cout<<E2.getSalary()<<endl;
+    
+    return 0;
+}
