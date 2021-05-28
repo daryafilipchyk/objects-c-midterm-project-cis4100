@@ -1,0 +1,130 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// base class
+class Fruit {
+
+   protected:
+    string name, color;
+
+   public:
+    Fruit(){
+        name="";
+        color="";
+    }
+    Fruit(string c, string n){
+        color=c;
+        name=n;
+    }
+    void setColor(string clr) {
+        color = clr;
+    }
+    string getColor() {
+        return color;
+    }
+    void setName(string n) {
+        name = n;;
+    }
+    string getName() {
+        return name;
+    }
+    virtual void display(){
+        cout<<"This is a fruit"<<endl;
+    }
+};
+
+// derived class
+class Apple : public Fruit {
+private:
+    string appleAttribute;
+public:
+    Apple(string n, string c, string a):Fruit(n,c){
+    appleAttribute = a;
+    }
+    string getAppleAttribute(){
+        return appleAttribute;
+    }
+    void setAppleAttribute(string a){
+        appleAttribute = a;
+    }
+    void display(){
+        cout<<"This is an apple"<<endl;
+    }
+};
+
+class Orange: public Fruit{
+private:
+    string orangeAttribute;
+public:
+    Orange(string n, string c, string a):Fruit(n,c){
+        orangeAttribute = a;
+    }
+    string getOrangeAttribute(){
+        return orangeAttribute;
+    }
+    void setOrangeAttribute(string a){
+        orangeAttribute = a;
+    }
+    void display(){
+        cout<<"This is an orange"<<endl;
+    }
+};
+
+class GoldenDelicious: public Fruit{
+private:
+    string goldenDeliciousAttribute;
+public:
+    GoldenDelicious(string n, string c, string a):Fruit(n,c){
+        goldenDeliciousAttribute = a;
+    }
+    string getGoldenDeliciousAttribute(){
+        return goldenDeliciousAttribute;
+    }
+    void setGoldenDeliciousAttribute(string a){
+        goldenDeliciousAttribute = a;
+    }
+    void display(){
+        cout<<"This is Golden Delicious"<<endl;
+    }
+};
+
+class MacIntosh: public Fruit{
+private:
+    string macIntoshAttribute;
+public:
+    MacIntosh(string n, string c, string a):Fruit(n,c){
+        macIntoshAttribute = a;
+    }
+    string getMacIntoshAttribute(){
+        return macIntoshAttribute;
+    }
+    void setMacIntoshAttribute(string a){
+        macIntoshAttribute = a;
+    }
+    void display(){
+        cout<<"This is MacIntosh"<<endl;
+    }
+};
+int main() {
+    
+    Fruit *a;
+    Fruit *b;
+    Fruit *c;
+    Fruit *d;
+    
+    a = new Apple("name", "green", "apple");
+    a->display();
+    
+    b = new Orange("name", "orange", "orange");
+    b ->display();
+    
+    c = new GoldenDelicious("name", "red", "apple");
+    c ->display();
+    
+    d = new MacIntosh("name", "red", "apple");
+    d ->display();
+
+
+    return 0;
+}
